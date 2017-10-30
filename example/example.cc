@@ -4,6 +4,7 @@
 
 #include "base/strings/string_number_conversions.h"
 #include "base/strings/utf_string_conversions.h"
+#include "base/process/process_iterator.h"
 #include "base/files/file_util.h"
 #include "base/files/file_path.h"
 #include "base/path_service.h"
@@ -17,6 +18,9 @@ int main() {
 	int64_t dir_size = base::ComputeDirectorySize(dir);
 
   std::cout << base::IntToString(dir_size) << std::endl;
+  
+  int count = base::GetProcessCount(L"notepad.exe", nullptr);
+  std::cout << count << std::endl;
   
   system("pause");
 }
