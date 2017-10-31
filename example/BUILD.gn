@@ -10,6 +10,7 @@ executable("example") {
   ]
   
   sources = [
-    "//example/example.cc",
+    #"//example/sample.cc",
+    "//example/thread.cc",
   ]
 }
