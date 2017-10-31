@@ -215,9 +215,6 @@ class BASE_EXPORT ThreadRestrictions {
   friend class ui::CommandBufferClientImpl;
   friend class ui::CommandBufferLocal;
   friend class ui::GpuState;
-  /// 115chrome patch {
-  friend class MessagePumpForCURL;
-  /// }
 
   // END ALLOWED USAGE.
   // BEGIN USAGE THAT NEEDS TO BE FIXED.

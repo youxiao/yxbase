@@ -222,13 +222,6 @@ void RunLoop::DisallowNestingOnCurrentThread() {
   tls_delegate.Get().Get()->allow_nesting_ = false;
 }
 
-/// 115chrome patch {
-MessageLoop* RunLoop::message_loop() {
-  MessageLoop* msg_loop = (MessageLoop*)delegate_;
-  return msg_loop;
-}
-/// }
-
 bool RunLoop::BeforeRun() {
   DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
 

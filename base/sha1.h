@@ -11,16 +11,7 @@
 
 #include "base/base_export.h"
 
-/// 115chrome patch
-#include "base/synchronization/waitable_event.h"
-#include "base/callback.h"
-///
-
 namespace base {
-
-/// 115chrome patch
-class File;
-///
 
 // These functions perform SHA-1 operations.
 
@@ -34,11 +25,6 @@ BASE_EXPORT std::string SHA1HashString(const std::string& str);
 // in |hash|. |hash| must be kSHA1Length bytes long.
 BASE_EXPORT void SHA1HashBytes(const unsigned char* data, size_t len,
                                unsigned char* hash);
-
-/// 115chrome patch
-BASE_EXPORT std::string SHA1HashFile(base::File* file, const base::Callback<void(int64_t)>& progress_cb, base::WaitableEvent* stop_event);
-BASE_EXPORT std::string SHA1HashFilePre128Kb(base::File* file);
-///
 
 }  // namespace base
 

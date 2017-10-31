@@ -10,12 +10,6 @@
 
 #include "base/sys_byteorder.h"
 
-/// 115chrome patch
-#include "base/strings/string_number_conversions.h"
-#include "base/files/file.h"
-///
-
-
 namespace base {
 
 // Implementation of SHA-1. Only handles data in byte-sized blocks,
@@ -216,84 +210,5 @@ void SHA1HashBytes(const unsigned char* data, size_t len,
 
   memcpy(hash, sha.Digest(), SecureHashAlgorithm::kDigestSizeBytes);
 }
-
-
-/// 115chrome patch
-std::string SHA1HashFile(base::File* file, const base::Callback<void(int64_t)>& progress_cb, base::WaitableEvent* stop_event) {
-  if (!file || !file->IsValid()) {
-    return "";
-  }
-
-  file->Seek(base::File::FROM_BEGIN, 0);
-
-  char data[0x4000] = { 0 };  // 16kb
-  SecureHashAlgorithm sha;
-
-  time_t last_progress_cb_time = 0;
-  time_t now_time = 0;
-
-  int64_t progress = 0;
-  int64_t read_size = 0;
-  while (1) {
-    if (stop_event && stop_event->IsSignaled()) {
-      stop_event->Reset();
-      break;
-    }
-
-    memset(data, 0, sizeof(data));
-
-    read_size = file->ReadAtCurrentPos(data, sizeof(data));
-    if (read_size <= 0)
-      break;
-
-    sha.Update(data, read_size);
-
-    progress += read_size;
-
-    now_time = time(NULL);
-    if (now_time - last_progress_cb_time > 1) {
-      progress_cb.Run(progress);
-      last_progress_cb_time = now_time;
-    }
-  }
-
-  sha.Final();
-
-  return base::HexEncode((char*)sha.Digest(), SecureHashAlgorithm::kDigestSizeBytes);
-}
-std::string SHA1HashFilePre128Kb(base::File* file) {
-  if (!file || !file->IsValid()) {
-    return "";
-  }
-  file->Seek(base::File::FROM_BEGIN, 0);
-
-  char data[0x4000] = { 0 };  // 16kb
-  SecureHashAlgorithm sha;
-
-  int64_t read_size = 0;
-  int64_t max_length = 0x20000; // 128kb
-  int64_t unit_size = sizeof(data);
-
-  while (1) {
-    memset(data, 0, sizeof(data));
-
-    read_size = file->ReadAtCurrentPos(data, unit_size);
-    if (read_size <= 0)
-      break;
-
-    sha.Update(data, read_size);
-
-    max_length -= read_size;
-    if (max_length <= 0)
-      break;
-    if (max_length < unit_size)
-      unit_size = max_length;
-  }
-
-  sha.Final();
-
-  return base::HexEncode((char*)sha.Digest(), SecureHashAlgorithm::kDigestSizeBytes);
-}
-///
 
 }  // namespace base

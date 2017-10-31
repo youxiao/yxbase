@@ -29,10 +29,6 @@ class MessagePumpUIApplication;
 
 class SingleThreadTaskRunner;
 
-/// 115chrome patch
-class MessageLoop;
-///
-
 // Helper class to run the RunLoop::Delegate associated with the current thread.
 // A RunLoop::Delegate must have been bound to this thread (ref.
 // RunLoop::RegisterDelegateForCurrentThread()) prior to using any of RunLoop's
@@ -97,10 +93,6 @@ class BASE_EXPORT RunLoop {
   //   run_loop.Run();
   base::Closure QuitClosure();
   base::Closure QuitWhenIdleClosure();
-
-  /// 115chrome patch
-  MessageLoop* message_loop();
-  ///
 
   // Returns true if there is an active RunLoop on this thread.
   // Safe to call before RegisterDelegateForCurrentThread().

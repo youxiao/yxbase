@@ -123,10 +123,6 @@ class BASE_EXPORT FileEnumerator {
   // Write the file info into |info|.
   FileInfo GetInfo() const;
 
-  /// 115chrome patch
-  FilePath GetRootPath() const { return root_path_; }
-  ///
-
  private:
   // Returns true if the given path should be skipped in enumeration.
   bool ShouldSkip(const FilePath& path);
