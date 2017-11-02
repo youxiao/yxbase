@@ -1,0 +1,37 @@
+source_set("gfx_export") {
+  sources = [
+    "gfx_export.h",
+    "native_widget_types.h",
+  ]
+}
+
+component("gfx_win") {
+  sources = [
+    "win/direct_manipulation.cc",
+    "win/direct_manipulation.h",
+    #"win/direct_write.cc",
+    #"win/direct_write.h",
+    "win/hwnd_util.cc",
+    "win/hwnd_util.h",
+    "win/msg_util.h",
+    "win/physical_size.cc",
+    "win/physical_size.h",
+    "win/rendering_window_manager.cc",
+    "win/rendering_window_manager.h",
+    "win/scoped_set_map_mode.h",
+    "win/singleton_hwnd.cc",
+    "win/singleton_hwnd.h",
+    "win/singleton_hwnd_observer.cc",
+    "win/singleton_hwnd_observer.h",
+    "win/text_analysis_source.cc",
+    "win/text_analysis_source.h",
+    "win/window_impl.cc",
+    "win/window_impl.h",
+  ]
+
+  deps = [
+    "//base",
+    "//base:base_static",
+    "//base:i18n",
+  ]
+}

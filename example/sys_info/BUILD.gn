@@ -1,0 +1,19 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+executable("example_sys_info") {
+  output_name = "example_sys_info"
+
+  deps = [
+    "//base:base",
+    "//ui/gfx:gfx_win",
+    "//ui/gfx/geometry:geometry",
+    "//ui/gfx/range:range",
+    "//ui/display:display",
+  ]
+  
+  sources = [
+    "//example/sys_info/sys_info.cc",
+  ]
+}

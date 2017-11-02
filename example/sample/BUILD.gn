@@ -2,11 +2,14 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-group("root") {
+executable("example_sample") {
+  output_name = "example_sample"
+
   deps = [
-    "//example/sample:example_sample",
-    "//example/log:example_log",
-    "//example/sys_info:example_sys_info",
-    "//example/thread:example_thread",
+    "//base:base",
+  ]
+  
+  sources = [
+    "//example/sample/sample.cc",
   ]
 }

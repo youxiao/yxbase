@@ -1,0 +1,75 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//build/config/ui.gni")
+import("//testing/test.gni")
+
+component("display") {
+  sources = [
+    "display.cc",
+    "display.h",
+    "display_change_notifier.cc",
+    "display_change_notifier.h",
+    "display_export.h",
+    "display_finder.cc",
+    "display_finder.h",
+    "display_layout.cc",
+    "display_layout.h",
+    "display_layout_builder.cc",
+    "display_layout_builder.h",
+    "display_list.cc",
+    "display_list.h",
+    "display_observer.cc",
+    "display_observer.h",
+    "display_switches.cc",
+    "display_switches.h",
+    "fake_display_delegate.cc",
+    "fake_display_delegate.h",
+    "fake_display_snapshot.cc",
+    "fake_display_snapshot.h",
+    "ios/screen_ios.mm",
+    "mac/screen_mac.mm",
+    "screen.cc",
+    "screen.h",
+    "screen_android.cc",
+    "screen_aura.cc",
+    "screen_base.cc",
+    "screen_base.h",
+    "win/display_info.cc",
+    "win/display_info.h",
+    "win/dpi.cc",
+    "win/dpi.h",
+    "win/scaling_util.cc",
+    "win/scaling_util.h",
+    "win/screen_win.cc",
+    "win/screen_win.h",
+    "win/screen_win_display.cc",
+    "win/screen_win_display.h",
+  ]
+
+  defines = [ "DISPLAY_IMPLEMENTATION" ]
+
+  public_deps = [
+    "//ui/display/types",
+  ]
+
+  deps = [
+    "//base",
+    #"//mojo/public/cpp/bindings:struct_traits",
+    "//third_party/re2",
+    "//ui/display/util",
+    "//ui/gfx/geometry",
+  ]
+
+  if (!use_aura) {
+    sources -= [ "screen_aura.cc" ]
+  }
+
+  if (is_mac) {
+    libs = [
+      "AppKit.framework",
+      "CoreGraphics.framework",
+    ]
+  }
+}
