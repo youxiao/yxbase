@@ -4,9 +4,12 @@
 
 group("root") {
   deps = [
-    "//example/sample:example_sample",
-    "//example/log:example_log",
-    "//example/sys_info:example_sys_info",
-    "//example/thread:example_thread",
+    "//example/sample:sample",
+    "//example/log:log",
+    "//example/sys_info:sys_info",
+    "//example/thread:thread",
+    "//example/url_request:url_request",
+    "//example/http_server:http_server",
+    "//example/websocket_server:websocket_server",
   ]
 }

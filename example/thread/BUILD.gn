@@ -2,8 +2,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-executable("example_thread") {
-  output_name = "example_thread"
+executable("thread") {
+  output_dir = "$root_out_dir/example"
 
   deps = [
     "//base:base",

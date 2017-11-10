@@ -1,0 +1,18 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+executable("websocket_server") {
+  output_dir = "$root_out_dir/example"
+
+  deps = [
+    "//base:base",
+    "//net:net",
+    "//net:http_server",
+  ]
+  
+  sources = [
+    "//example/websocket_server/websocket_server.cc",
+    "//example/websocket_server/websocket_server.h",
+  ]
+}

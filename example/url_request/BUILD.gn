@@ -1,0 +1,17 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+executable("url_request") {
+  output_dir = "$root_out_dir/example"
+
+  deps = [
+    "//base:base",
+    "//net:net",
+  ]
+  
+  sources = [
+    "//example/url_request/url_request.cc",
+    "//example/url_request/url_request_context_getter.cc",
+  ]
+}
