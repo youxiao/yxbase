@@ -101,7 +101,11 @@ struct UIDNAWrapper {
     // registrars, search engines) converge toward a consensus.
     value = uidna_openUTS46(UIDNA_CHECK_BIDI, &err);
     if (U_FAILURE(err)) {
+      /// youxiao patch
+      #if 0
       CHECK(false) << "failed to open UTS46 data with error: " << err;
+      #endif
+      ///
       value = NULL;
     }
   }

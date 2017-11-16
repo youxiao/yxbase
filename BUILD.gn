@@ -3,6 +3,7 @@
 # found in the LICENSE file.
 
 group("root") {
+  testonly = true
   deps = [
     "//example/sample:sample",
     "//example/log:log",
@@ -11,5 +12,8 @@ group("root") {
     "//example/url_request:url_request",
     "//example/http_server:http_server",
     "//example/websocket_server:websocket_server",
+    "//example/crypto:crypto",
+    "//example/url:url",
+    "//example/sql:sql",
   ]
 }

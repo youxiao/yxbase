@@ -1,0 +1,33 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+executable("sql") {
+  testonly = true
+  output_dir = "$root_out_dir/sql"
+
+  deps = [
+    "//base",
+    "//base/test:test_support",
+    "//sql",
+    "//sql:test_support",
+    "//testing/gtest",
+    "//third_party/sqlite",
+  ]
+  
+  sources = [
+    "//example/sql/test/paths.cc",
+    "//example/sql/test/paths.h",
+    "//example/sql/test/sql_test_base.cc",
+    "//example/sql/test/sql_test_base.h",
+    "//example/sql/test/sql_test_suite.cc",
+    "//example/sql/test/sql_test_suite.h",
+
+    "//example/sql/main.cc",
+    "//example/sql/connection_unittest.cc",
+    "//example/sql/meta_table_unittest.cc",
+    "//example/sql/sqlite_features_unittest.cc",
+    "//example/sql/statement_unittest.cc",
+    "//example/sql/transaction_unittest.cc",
+  ]
+}

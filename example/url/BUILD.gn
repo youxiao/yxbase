@@ -1,0 +1,26 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+executable("url") {
+  testonly = true
+  output_dir = "$root_out_dir/url"
+
+  deps = [
+    "//base:base",
+    "//url:url",
+    "//third_party/googletest:gtest",
+    "//third_party/icu:icu",
+  ]
+  
+  sources = [
+    "//example/url/run_all_unittests.cc",
+    "//example/url/gurl_unittest.cc",
+    "//example/url/origin_unittest.cc",
+    "//example/url/scheme_host_port_unittest.cc",
+    "//example/url/url_canon_icu_unittest.cc",
+    "//example/url/url_canon_unittest.cc",
+    "//example/url/url_parse_unittest.cc",
+    "//example/url/url_util_unittest.cc",
+  ]
+}

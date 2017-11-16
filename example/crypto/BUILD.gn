@@ -1,0 +1,29 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+executable("crypto") {
+  testonly = true
+  output_dir = "$root_out_dir/crypto"
+
+  deps = [
+    "//base:base",
+    "//crypto:crypto",
+    "//testing/gtest",
+  ]
+  
+  sources = [
+    "//example/crypto/main.cc",
+    "//example/crypto/ec_private_key_unittest.cc",
+    "//example/crypto/encryptor_unittest.cc",
+    "//example/crypto/hkdf_unittest.cc",
+    "//example/crypto/hmac_unittest.cc",
+    "//example/crypto/p224_spake_unittest.cc",
+    "//example/crypto/random_unittest.cc",
+    "//example/crypto/rsa_private_key_unittest.cc",
+    "//example/crypto/secure_hash_unittest.cc",
+    "//example/crypto/signature_creator_unittest.cc",
+    "//example/crypto/signature_verifier_unittest.cc",
+    "//example/crypto/symmetric_key_unittest.cc",
+  ]
+}
