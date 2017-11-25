@@ -15,5 +15,11 @@ group("root") {
     "//example/crypto:crypto",
     "//example/url:url",
     "//example/sql:sql",
+    "//example/json:json",
+    "//example/i18n:i18n",
+    "//example/synchronization:synchronization",
+    "//example/process:process",
+    "//example/files:files",
+    "//example/containers:containers",
   ]
 }

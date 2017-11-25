@@ -81,6 +81,9 @@
 
 namespace base {
 
+/// youxiao patch
+class ConditionVarImpl;
+///
 class TimeDelta;
 
 class BASE_EXPORT ConditionVariable {
@@ -105,8 +108,14 @@ class BASE_EXPORT ConditionVariable {
  private:
 
 #if defined(OS_WIN)
+  /// youxiao patch
+  #if 0
   CONDITION_VARIABLE cv_;
   SRWLOCK* const srwlock_;
+  #else
+  ConditionVarImpl* impl_ = nullptr;
+  #endif
+  ///
 #elif defined(OS_POSIX)
   pthread_cond_t condition_;
   pthread_mutex_t* user_mutex_;

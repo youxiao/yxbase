@@ -1,0 +1,24 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+executable("synchronization") {
+  testonly = true
+  output_dir = "$root_out_dir/synchronization"
+
+  deps = [
+    "//base:base",
+    "//base/test:test_support",
+    "//testing/gtest",
+  ]
+  
+  sources = [
+    "//example/synchronization/main.cc",
+    "//example/synchronization/atomic_flag_unittest.cc",
+    "//example/synchronization/condition_variable_unittest.cc",
+    "//example/synchronization/lock_unittest.cc",
+    "//example/synchronization/read_write_lock_unittest.cc",
+    "//example/synchronization/waitable_event_unittest.cc",
+    "//example/synchronization/waitable_event_watcher_unittest.cc",
+  ]
+}

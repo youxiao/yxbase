@@ -1,0 +1,28 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+executable("containers") {
+  testonly = true
+  output_dir = "$root_out_dir/containers"
+
+  deps = [
+    "//base:base",
+    "//base/test:test_support",
+    "//testing/gtest",
+    "//testing/gmock",
+  ]
+  
+  sources = [
+    "//example/containers/main.cc",
+    "//example/containers/adapters_unittest.cc",
+    "//example/containers/flat_map_unittest.cc",
+    "//example/containers/flat_set_unittest.cc",
+    "//example/containers/flat_tree_unittest.cc",
+    "//example/containers/hash_tables_unittest.cc",
+    "//example/containers/linked_list_unittest.cc",
+    "//example/containers/mru_cache_unittest.cc",
+    "//example/containers/small_map_unittest.cc",
+    "//example/containers/stack_container_unittest.cc",
+  ]
+}

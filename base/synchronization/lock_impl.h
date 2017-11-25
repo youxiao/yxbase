@@ -24,7 +24,13 @@ namespace internal {
 class BASE_EXPORT LockImpl {
  public:
 #if defined(OS_WIN)
+  /// youxiao patch
+  #if 0
   using NativeHandle = SRWLOCK;
+  #else
+  typedef CRITICAL_SECTION NativeHandle;
+  #endif
+  ///
 #elif defined(OS_POSIX)
   using NativeHandle =  pthread_mutex_t;
 #endif

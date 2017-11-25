@@ -1,0 +1,31 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+executable("files") {
+  testonly = true
+  output_dir = "$root_out_dir/files"
+
+  deps = [
+    "//base:base",
+    "//base/test:test_support",
+    "//testing/gtest",
+  ]
+  
+  sources = [
+    "//example/files/main.cc",
+    "//example/files/dir_reader_posix_unittest.cc",
+    "//example/files/file_descriptor_watcher_posix_unittest.cc",
+    "//example/files/file_locking_unittest.cc",
+    "//example/files/file_path_unittest.cc",
+    "//example/files/file_path_watcher_unittest.cc",
+    "//example/files/file_proxy_unittest.cc",
+    "//example/files/file_unittest.cc",
+    "//example/files/file_util_proxy_unittest.cc",
+    "//example/files/file_util_unittest.cc",
+    "//example/files/important_file_writer_unittest.cc",
+    "//example/files/memory_mapped_file_unittest.cc",
+    "//example/files/scoped_platform_handle_unittest.cc",
+    "//example/files/scoped_temp_dir_unittest.cc",
+  ]
+}

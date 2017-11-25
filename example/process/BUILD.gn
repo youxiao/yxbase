@@ -1,0 +1,23 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+executable("process") {
+  testonly = true
+  output_dir = "$root_out_dir/process"
+
+  deps = [
+    "//base:base",
+    "//base/test:test_support",
+    "//testing/gtest",
+  ]
+  
+  sources = [
+    "//example/process/main.cc",
+    "//example/process/process_info_unittest.cc",
+    "//example/process/process_metrics_unittest.cc",
+    "//example/process/process_unittest.cc",
+    "//example/process/process_util_unittest.cc",
+    #"//example/process/memory_unittest.cc",
+  ]
+}

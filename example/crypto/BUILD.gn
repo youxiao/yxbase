@@ -14,6 +14,7 @@ executable("crypto") {
   
   sources = [
     "//example/crypto/main.cc",
+    "//example/crypto/aead_unittest.cc",
     "//example/crypto/ec_private_key_unittest.cc",
     "//example/crypto/encryptor_unittest.cc",
     "//example/crypto/hkdf_unittest.cc",

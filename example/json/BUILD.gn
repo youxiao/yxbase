@@ -1,0 +1,23 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+executable("json") {
+  testonly = true
+  output_dir = "$root_out_dir/json"
+
+  deps = [
+    "//base:base",
+    "//testing/gtest",
+  ]
+  
+  sources = [
+    "//example/json/main.cc",
+    "//example/json/json_parser_unittest.cc",
+    "//example/json/json_reader_unittest.cc",
+    "//example/json/json_value_converter_unittest.cc",
+    "//example/json/json_value_serializer_unittest.cc",
+    "//example/json/json_writer_unittest.cc",
+    "//example/json/string_escape_unittest.cc",
+  ]
+}

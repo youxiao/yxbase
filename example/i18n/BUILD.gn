@@ -1,0 +1,31 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+executable("i18n") {
+  testonly = true
+  output_dir = "$root_out_dir/i18n"
+
+  deps = [
+    "//base:base",
+    "//base/test:test_support",
+    "//third_party/icu",
+    "//testing/gtest",
+  ]
+  
+  sources = [
+    "//example/i18n/main.cc",
+    "//example/i18n/break_iterator_unittest.cc",
+    "//example/i18n/case_conversion_unittest.cc",
+    "//example/i18n/char_iterator_unittest.cc",
+    "//example/i18n/character_encoding_unittest.cc",
+    "//example/i18n/file_util_icu_unittest.cc",
+    "//example/i18n/icu_string_conversions_unittest.cc",
+    "//example/i18n/message_formatter_unittest.cc",
+    "//example/i18n/number_formatting_unittest.cc",
+    "//example/i18n/streaming_utf8_validator_unittest.cc",
+    "//example/i18n/string_search_unittest.cc",
+    "//example/i18n/time_formatting_unittest.cc",
+    "//example/i18n/timezone_unittest.cc",
+  ]
+}

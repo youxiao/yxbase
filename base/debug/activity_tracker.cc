@@ -159,7 +159,11 @@ ActivityData ActivityData::ForThread(const PlatformThreadHandle& handle) {
   ThreadRef thread_ref;
   thread_ref.as_id = 0;  // Zero the union in case other is smaller.
 #if defined(OS_WIN)
+  /// youxiao patch fix it
+  #if 0
   thread_ref.as_tid = ::GetThreadId(handle.platform_handle());
+  #endif
+  ///
 #elif defined(OS_POSIX)
   thread_ref.as_handle = handle.platform_handle();
 #endif

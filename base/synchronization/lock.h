@@ -19,6 +19,9 @@ namespace base {
 // AssertAcquired() method.
 class BASE_EXPORT Lock {
  public:
+  /// youxiao patch
+  friend class WinVistaCondVar;
+  ///
 #if !DCHECK_IS_ON()
    // Optimized wrapper implementation
   Lock() : lock_() {}
