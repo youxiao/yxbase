@@ -30,7 +30,7 @@ bool LockImpl::Try() {
   #if 0
   return !!::TryAcquireSRWLockExclusive(&native_handle_);
   #else
-  return ::TryEnterCriticalSection(&native_handle_);
+  return ::TryEnterCriticalSection(&native_handle_) != FALSE;
   #endif
   ///
 }

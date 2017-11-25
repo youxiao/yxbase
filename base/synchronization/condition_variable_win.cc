@@ -545,9 +545,9 @@ void ConditionVariable::TimedWait(const TimeDelta& max_time) {
 void ConditionVariable::Broadcast() {
   /// youxiao patch
   #if 0
-  impl_->Broadcast();
-  #else
   WakeAllConditionVariable(&cv_);
+  #else
+  impl_->Broadcast();
   #endif
   ///
 }
