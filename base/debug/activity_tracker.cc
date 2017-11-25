@@ -26,6 +26,13 @@
 #include "base/strings/utf_string_conversions.h"
 #include "base/threading/platform_thread.h"
 
+/// youxiao patch
+#include <objbase.h>
+#include <windows.h>
+#include <stddef.h>
+#include <winternl.h>
+///
+
 namespace base {
 namespace debug {
 
@@ -65,6 +72,48 @@ union ThreadRef {
   PlatformThreadHandle::Handle as_handle;
 #endif
 };
+
+/// youxiao patch
+HANDLE YXGetTheradId(HANDLE thread_handle) {
+  // Define the internal types we need to invoke NtQueryInformationThread.
+  enum THREAD_INFORMATION_CLASS { ThreadBasicInformation };
+
+  struct CLIENT_ID {
+    HANDLE UniqueProcess;
+    HANDLE UniqueThread;
+  };
+
+  struct THREAD_BASIC_INFORMATION {
+    NTSTATUS ExitStatus;
+    TEB* Teb;
+    CLIENT_ID ClientId;
+    KAFFINITY AffinityMask;
+    LONG Priority;
+    LONG BasePriority;
+  };
+
+  using NtQueryInformationThreadFunction =
+      NTSTATUS (WINAPI*)(HANDLE, THREAD_INFORMATION_CLASS, PVOID, ULONG,
+                         PULONG);
+
+  const NtQueryInformationThreadFunction nt_query_information_thread =
+      reinterpret_cast<NtQueryInformationThreadFunction>(
+          ::GetProcAddress(::GetModuleHandle(L"ntdll.dll"),
+                           "NtQueryInformationThread"));
+  if (!nt_query_information_thread)
+    return nullptr;
+
+  THREAD_BASIC_INFORMATION basic_info = {0};
+  NTSTATUS status =
+      nt_query_information_thread(thread_handle, ThreadBasicInformation,
+                                  &basic_info, sizeof(THREAD_BASIC_INFORMATION),
+                                  nullptr);
+  if (status != 0)
+    return nullptr;
+
+  return basic_info.ClientId.UniqueThread;
+}
+///
 
 // Gets the next non-zero identifier. It is only unique within a process.
 uint32_t GetNextDataId() {
@@ -162,6 +211,8 @@ ActivityData ActivityData::ForThread(const PlatformThreadHandle& handle) {
   /// youxiao patch fix it
   #if 0
   thread_ref.as_tid = ::GetThreadId(handle.platform_handle());
+  #else
+  thread_ref.as_tid = (DWORD)YXGetTheradId(handle.platform_handle());
   #endif
   ///
 #elif defined(OS_POSIX)
