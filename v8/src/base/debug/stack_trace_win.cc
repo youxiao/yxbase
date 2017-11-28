@@ -49,6 +49,10 @@ void GetExePath(wchar_t* path_out) {
 }
 
 bool InitializeSymbols() {
+  /// youxiao patch SymGetSearchPathW function depend on DbgHelp.dll
+  return false;
+  ///
+
   if (g_initialized_symbols) return g_init_error == ERROR_SUCCESS;
   g_initialized_symbols = true;
   // Defer symbol load until they're needed, use undecorated names, and get line

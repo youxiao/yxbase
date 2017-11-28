@@ -61,6 +61,10 @@ int main(int argc, const char* const* argv) {
   float screen_scale = display::win::GetDPIScale();
   gfx::Size screen_size = screen.GetPrimaryDisplaySize();
 
+  int nScreenWidth, nScreenHeight;
+  nScreenWidth = GetSystemMetrics(SM_CXSCREEN);
+  nScreenHeight = GetSystemMetrics(SM_CYSCREEN);
+
   std::cout << "NumberOfProcessors:" << base::SysInfo::NumberOfProcessors() << "\n"
             << "AmountOfPhysicalMemoryMB:" << base::SysInfo::AmountOfPhysicalMemoryMB() << "MB\n"
             << "OperatingSystemName:" << base::SysInfo::OperatingSystemName() << "\n"
@@ -68,6 +72,7 @@ int main(int argc, const char* const* argv) {
             << "OperatingSystemArchitecture:" << base::SysInfo::OperatingSystemArchitecture() << "\n"
             << "Screen Scale:" << screen_scale << "\n"
             << "Screen Size:" << screen_size.width() * screen_scale << " x " << screen_size.height() * screen_scale << "\n"
+            << "Screen Size:" << nScreenWidth << " x " << nScreenHeight << "\n"
             << "CPUModelName:" << base::SysInfo::CPUModelName() << std::endl;
   
   system("pause");
