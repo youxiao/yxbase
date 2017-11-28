@@ -1,0 +1,39 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+executable("win") {
+  testonly = true
+  output_dir = "$root_out_dir/win"
+
+  deps = [
+    "//base:base",
+    "//base/test:test_support",
+    "//testing/gtest",
+    "//testing/gmock",
+  ]
+  
+  sources = [
+    "//example/win/main.cc",
+    "//example/win/enum_variant_unittest.cc",
+    "//example/win/event_trace_consumer_unittest.cc",
+    "//example/win/event_trace_controller_unittest.cc",
+    "//example/win/event_trace_provider_unittest.cc",
+    "//example/win/iunknown_impl_unittest.cc",
+    "//example/win/message_window_unittest.cc",
+    "//example/win/object_watcher_unittest.cc",
+    "//example/win/pe_image_unittest.cc",
+    "//example/win/registry_unittest.cc",
+    "//example/win/scoped_bstr_unittest.cc",
+    "//example/win/scoped_comptr_unittest.cc",
+    "//example/win/scoped_handle_unittest.cc",
+    "//example/win/scoped_process_information_unittest.cc",
+    "//example/win/scoped_variant_unittest.cc",
+    "//example/win/shortcut_unittest.cc",
+    "//example/win/startup_information_unittest.cc",
+    "//example/win/wait_chain_unittest.cc",
+    "//example/win/win_util_unittest.cc",
+    "//example/win/windows_version_unittest.cc",
+    "//example/win/wrapped_window_proc_unittest.cc",
+  ]
+}

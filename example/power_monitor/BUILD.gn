@@ -1,0 +1,20 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+executable("power_monitor") {
+  testonly = true
+  output_dir = "$root_out_dir/power_monitor"
+
+  deps = [
+    "//base:base",
+    "//base/test:test_support",
+    "//testing/gtest",
+    "//testing/gmock",
+  ]
+  
+  sources = [
+    "//example/power_monitor/main.cc",
+    "//example/power_monitor/power_monitor_unittest.cc",
+  ]
+}

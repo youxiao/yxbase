@@ -21,5 +21,8 @@ group("root") {
     "//example/process:process",
     "//example/files:files",
     "//example/containers:containers",
+    "//example/win:win",
+    "//example/power_monitor:power_monitor",
+    "//example/system_monitor:system_monitor",
   ]
 }
