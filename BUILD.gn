@@ -2,7 +2,23 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-group("root") {
+static_library("yxsdk") {
+  deps = [
+    "//base:base",
+    "//crypto:crypto",
+    "//net:net",
+    "//net:http_server",
+    "//sql",
+    "//ui/gfx:gfx_win",
+    "//ui/gfx/geometry:geometry",
+    "//ui/gfx/range:range",
+    "//ui/display:display",
+    "//url:url",
+    "//third_party/icu:icu",
+  ]
+}
+
+group("example") {
   testonly = true
   deps = [
     "//example/sample:sample",

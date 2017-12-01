@@ -6,8 +6,10 @@
 ### yxbase库编译
 * 安装depot_tools(包含GN和Ninja工具)，放在yxbase根目录，compile.bat脚本可自动识别。提供了一份Windows可直接用的depot_tools(https://pan.baidu.com/s/1qYr4T68 提取码：btad)
 * 运行compile.bat
+* 使用args.gn文件内的编译配置
 * 默认输出在out目录
-* 仅在Win10 + VS2015 Update3编译/验证/测试通过
+* vs命令行运行create_yxbase_run_in_vs_cmd.bat脚本合并最终的yxbase.lib
+* 在Win10 + VS2015 Update3编译/验证/测试通过
 
 ### yxbase库使用
 **1. 在GN工程使用**
@@ -28,12 +30,11 @@
 
 **2. 在VS工程使用**
 
-* 包含目录：yxbasee path
+* 包含目录：yxbase path
 * 链接库文件：
 
 ```
-out\obj\base\base.lib
-out\obj\base\base_static.lib
+yxbase.lib
 advapi32.lib
 comdlg32.lib
 dbghelp.lib
