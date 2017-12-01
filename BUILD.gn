@@ -6,6 +6,7 @@ group("root") {
   testonly = true
   deps = [
     "//example/sample:sample",
+    "//example/base:base",
     "//example/log:log",
     "//example/sys_info:sys_info",
     "//example/thread:thread",

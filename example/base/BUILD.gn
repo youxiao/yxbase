@@ -1,0 +1,73 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+executable("base") {
+  testonly = true
+  output_dir = "$root_out_dir/base"
+
+  deps = [
+    "//base:base",
+    "//base/test:test_support",
+    "//base/test:native_library_test_utils",
+    "//testing/gtest",
+    "//testing/gmock",
+  ]
+  
+  sources = [
+    "//example/base/main.cc",
+    "//example/base/at_exit_unittest.cc",
+    "//example/base/atomicops_unittest.cc",
+    "//example/base/barrier_closure_unittest.cc",
+    "//example/base/base64_unittest.cc",
+    "//example/base/base64url_unittest.cc",
+    "//example/base/big_endian_unittest.cc",
+    "//example/base/bind_helpers_unittest.cc",
+    "//example/base/bind_unittest.cc",
+    "//example/base/bit_cast_unittest.cc",
+    "//example/base/bits_unittest.cc",
+    "//example/base/build_time_unittest.cc",
+    "//example/base/callback_helpers_unittest.cc",
+    "//example/base/callback_list_unittest.cc",
+    "//example/base/cancelable_callback_unittest.cc",
+    "//example/base/command_line_unittest.cc",
+    "//example/base/deferred_sequenced_task_runner_unittest.cc",
+    "//example/base/environment_unittest.cc",
+    "//example/base/feature_list_unittest.cc",
+    "//example/base/file_version_info_win_unittest.cc",
+    "//example/base/guid_unittest.cc",
+    "//example/base/hash_unittest.cc",
+    "//example/base/id_map_unittest.cc",
+    "//example/base/lazy_instance_unittest.cc",
+    "//example/base/logging_unittest.cc",
+    "//example/base/md5_unittest.cc",
+    #"//example/base/native_library_unittest.cc",
+    "//example/base/path_service_unittest.cc",
+    "//example/base/pending_task_unittest.cc",
+    "//example/base/pickle_unittest.cc",
+    "//example/base/rand_util_unittest.cc",
+    "//example/base/run_loop_unittest.cc",
+    "//example/base/scoped_clear_errno_unittest.cc",
+    "//example/base/scoped_generic_unittest.cc",
+    #"//example/base/scoped_native_library_unittest.cc",
+    "//example/base/security_unittest.cc",
+    "//example/base/sequence_checker_unittest.cc",
+    "//example/base/sequence_token_unittest.cc",
+    "//example/base/sequenced_task_runner_unittest.cc",
+    "//example/base/sha1_unittest.cc",
+    "//example/base/stl_util_unittest.cc",
+    "//example/base/supports_user_data_unittest.cc",
+    "//example/base/sync_socket_unittest.cc",
+    "//example/base/sys_byteorder_unittest.cc",
+    "//example/base/sys_info_unittest.cc",
+    "//example/base/task_runner_util_unittest.cc",
+    "//example/base/template_util_unittest.cc",
+    "//example/base/tools_sanity_unittest.cc",
+    "//example/base/tracked_objects_unittest.cc",
+    "//example/base/tuple_unittest.cc",
+    "//example/base/unguessable_token_unittest.cc",
+    "//example/base/values_unittest.cc",
+    "//example/base/version_unittest.cc",
+    "//example/base/vlog_unittest.cc",
+  ]
+}
